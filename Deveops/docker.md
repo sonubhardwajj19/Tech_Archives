@@ -1,5 +1,5 @@
 # Docker
-
+ - Docker is a CONTAINER RUNTIME , there are many runtimes.
  - Docker is a tool that allows us to package an application along with everything it needs to run, so it works consistently on different computers and servers.
  - The main idea is that you package the application once and can run it in different environments without manually setting up all its dependencies each time.
     
@@ -50,6 +50,65 @@
       - A Docker Registry is a service that stores and distributes Docker images, allowing developers and servers to upload and download them.
       - registry stores the image, not your running container.   
 
-         
+
+    ## Images and containers
+    ### Docker Image
+    - A Docker image is a lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, a runtime, libraries, environment variables, and config files.
+
+    - A good mental model for an image is Your codebase on github.
+
+    ### Docker Container
+    - A container is a "running instance of an image".
+    It encapsulates the application or service and its dependencies, running in an isolated environment.
+
+    ![Docker-Registry](./images/dockerReg.png)
+
+    
+    ### Important Point
+    - Docker containers are isolated from each other and from the host system by default, but the isolation is not absolute.
+
+    - when we create a container it is basically a mini machine running inside our machine but u cant directly access that , for accessing u need port mapping.
+
+    Port mapping establishes a connection between:
+    - A port on your host machine.
+    - A port inside your Docker container.
+     
+    - Example :- docker run -d -p 3000:3000 my-node-app
+      - Left port = host machine port
+      - Right port = container port
+
+    - we can host same container on multiple ports of host machine , each in isloation and individually running.
+      - docker run -d -p 27017:27017 mongo
+      - docker run -d -p 27018:27017 mongo
+
+      ![port-mapping](./images/ports.png)
+
+
+
+   ## Common Docker Commands 
+     - docker images 
+       - Shows you all the images that you have on your machine
+
+     - docker ps
+       - Shows you all the containers you are running on your machine
+
+     - docker run 
+       - Lets you start a container
+       - -p ⇒ let’s you create a port mapping
+       - -d. ⇒ Let’s you run it in detatched mode
+
+     - docker build  
+
+     - docker push 
+       - Lets you push your image to a registry
+
+     - docker kill
+     - docker exec
+
+
+   ## Creating a Dockerfile  
+
+        
+    
         
 
