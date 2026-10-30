@@ -107,8 +107,44 @@
 
 
    ## Creating a Dockerfile  
+      - A Dockerfile is a text file containing instructions that Docker uses to build an image, and that image is used to create containers.
+      - If you want to create an image from your own code, that you can push to "dockerhub", you need to create a Dockerfile for your application.
+      - A dockerfile has 2 parts :-
+        1) Base image
+        2) Bunch of commands that you run on the base image (to install dependencies like Node.js)
 
-        
     
-        
+        ![Dockerfile](./images/dockerfile.png)
 
+
+        
+        - FROM specifies the base image on which your Docker image will be built.
+            
+            Imagine creating a Node.js application. Your machine already has Node.js installed, but Docker containers are isolated environments.
+            So we need to provide Node.js inside our image.
+            That's what FROM does.
+
+            Imp point: Every Dockerfile generally starts with a FROM instruction, which defines its base image.
+
+
+
+        ![Commoncommands](./images/cmd.png)
+
+
+         
+      - some common commands
+
+
+
+        ![DockerCommands](./images/dockerCmd.png) 
+
+
+
+
+        - -t	Tag (build), TTY (run)
+        - -p	Publish ports
+        - -d	Detached mode 
+
+      - u can create a ".dockerignore" file inside your project folder.
+            Similar to .gitignore.
+            Prevents unnecessary files(node modules) from being included in Docker's build context.
