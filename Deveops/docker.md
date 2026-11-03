@@ -145,6 +145,17 @@
         - -p	Publish ports
         - -d	Detached mode 
 
-      - u can create a ".dockerignore" file inside your project folder.
+      - u can and u should create a ".dockerignore" file inside your project folder.
             Similar to .gitignore.
             Prevents unnecessary files(node modules) from being included in Docker's build context.
+
+    ## Complete Docker Image Workflow
+      
+      1) Create a Dockerfile
+      2) Build the Docker image ( docker build -t my-app ) , Converts your Dockerfile into a Docker image.
+      3) Create a repository on Docker Hub
+      4) Tag your image ( docker tag my-app username/my-app:latest ).
+      5) Login to Docker Hub ( docker login ).
+      6) Push the image to Docker Hub ( docker push username/my-app:latest ).
+      7) Anyone can pull your image ( docker pull username/my-app:latest ).
+      8) Run the container ( docker run -d -p 3000:3000 username/my-app:latest ).
