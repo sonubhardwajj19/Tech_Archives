@@ -182,4 +182,47 @@
 
 
   - if a layer changes, Docker must rebuild that layer and all subsequent dependent layers. This is called Docker build cache invalidation.
+
   - This is why we optimize Dockerfile instruction order: ***Put frequently changing files and instructions towards the bottom, and less frequently changing instructions towards the top.***
+     
+     -  How often in a project do you think dependencies change ? Not so often rightt so ,
+     -  How often does the npm install layer need to change?
+     -  Wouldn’t it be nice if we could **cache** the npm install step considering dependencies don’t change often?
+  
+   - This is what we call *OPTIMISING A DOCKERFILE*
+
+
+   ## Optimising a Dockerfile
+    
+   - Dockerfile
+
+          FROM node:20
+
+          WORKDIR /usr/src/app
+
+          COPY package* .
+          COPY ./prisma .
+              
+          RUN npm install
+          RUN npx prisma generate
+
+          COPY . .
+
+          EXPOSE 3000
+
+          CMD ["node", "dist/index.js", ]
+
+  
+      - We first copy over only the things that npm install and npx prisma generate need (dependencies).
+      - Then we run these scripts.
+      - Then we copy over the rest of the source code. 
+
+
+  
+
+
+ ## Case 1 - You change your source code (but nothing in package.json/prisma)
+
+
+
+   ![dockercase1](./images/case1.png)
