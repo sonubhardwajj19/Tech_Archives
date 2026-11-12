@@ -189,7 +189,7 @@
      -  How often does the npm install layer need to change?
      -  Wouldn’t it be nice if we could **cache** the npm install step considering dependencies don’t change often?
   
-   - This is what we call *OPTIMISING A DOCKERFILE*
+   - This is what we call *OPTIMISING A DOCKERFILE* 
 
 
    ## Optimising a Dockerfile
@@ -226,3 +226,7 @@
 
 
    ![dockercase1](./images/case1.png)
+
+## Case 2 - You change the package.json file (added a dependency)
+
+   ![dockercase2](./images/dockerCase2.png)
